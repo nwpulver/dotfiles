@@ -1,3 +1,4 @@
+#!/usr/bin/fish
 cp ~/.vimrc ~/dotfiles/vim/
 cp ~/.config/qtile/config.py ~/dotfiles/qtile/
 cp ~/.config/qtile/autostart.sh ~/dotfiles/qtile/

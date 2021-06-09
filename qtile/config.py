@@ -86,7 +86,7 @@ keys = [
 
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawncmd(),
+    Key([mod], "r", lazy.spawn('rofi -show run'),
         desc="Spawn a command using a prompt widget"),
 ]
 
@@ -109,30 +109,30 @@ for i in groups:
 
 layouts = [
     # layout.Columns(border_focus_stack='#d75f5f'),
-    layout.Max(),
+    # layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     layout.Matrix(
         margin =8,
         border_width = 3,
-        border_focus= '#ffbc75',
+        border_focus= '#b50051',
         ),
     layout.MonadTall(
             margin =8,
         border_width = 3,
-        border_focus= '#ffbc75'
+        border_focus= '#b50051'
             ),
     layout.MonadWide(
         margin = 8,
         border_width = 3,
-        border_focus= '#ffbc75'
+        border_focus= '#b50051'
         ),
     # layout.RatioTile(),
     layout.Tile(
         margin = 8, 
         border_width = 3,
-        border_focus= '#ffbc75'
+        border_focus= '#b50051'
         ),
     # layout.TreeTab(
     #    margin = 8,
@@ -141,12 +141,12 @@ layouts = [
     # layout.Zoomy(),
 ]
 # Mouse Call back funcitons
-def launch_dmenu():
-    qtile.cmd_spawn('dmenu')
+
+
 
 widget_defaults = dict(
     font='Mononoki Nerd Font',
-    fontsize=12,
+    fontsize=14,
     padding=3,
 )
 extension_defaults = widget_defaults.copy()
@@ -155,10 +155,10 @@ screens = [
     Screen(
         bottom=bar.Bar(
             [
-                widget.Image(filename="/home/nathan/Documents/icons/cursor.png",
+                widget.Image(filename="/home/nathan/Documents/icons/manjaro.png",
                     mouse_callbacks= {'Button1': lambda:
-                    qtile.cmd_spawn("dmenu_run")},
-                    background='#ffffff',margin=0),
+                    qtile.cmd_spawn("rofi -show run")},
+                    background='#000000',margin=3),
                 widget.CurrentLayout(),
                 widget.GroupBox(),
                 widget.Prompt(),
@@ -169,28 +169,32 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.TextBox("default config", name="default"),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
+                widget.TextBox("Press &lt;M-r&gt; to spawn rofi", foreground="#d75f5f"),
                 widget.Systray(),
                 widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
                 widget.QuickExit(),
             ]   ,
-            24,
+            40,
         ),
     ),
     Screen(
         bottom=bar.Bar([
-                widget.CheckUpdates(distro="Arch"),
+                widget.CheckUpdates(distro="Arch",
+                    colour_have_updates='#ff0000',
+                    no_update_string='System up to date',
+                    update_interval = 1800,
+                    padding=10,),
+                widget.BitcoinTicker(currency='USD'),
+                widget.Spacer(length=bar.STRETCH),
                 widget.Volume(font="Mononoki Nerd Font",
                     emoji=True,volume_app='pavucontrol'),
-                widget.Spacer(length=bar.STRETCH),
                 widget.OpenWeather(
                     coordinates = { 'longitude':-117.92,
                         'latitude':33.876 },
                     metric=False,
-                    )
+                    ),
 
-                ], 30),
+                ], 40),
         )
 ]
 
