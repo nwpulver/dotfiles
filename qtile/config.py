@@ -24,14 +24,14 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import os
-import subprocess
-from typing import List  # noqa: F401
 
 from libqtile import bar, layout, widget, hook, qtile
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
+from typing import List  # noqa: F401
+import os
+import subprocess
 
 mod = "mod4"
 terminal = guess_terminal()
@@ -86,6 +86,7 @@ keys = [
 
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+    # Custom Keybinds
     Key([mod], "r", lazy.spawn('rofi -show run'),
         desc="Spawn a command using a prompt widget"),
 ]
@@ -130,7 +131,7 @@ layouts = [
         ),
     # layout.RatioTile(),
     layout.Tile(
-        margin = 8, 
+        margin = 8,
         border_width = 3,
         border_focus= '#b50051'
         ),

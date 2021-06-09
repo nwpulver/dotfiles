@@ -4,7 +4,6 @@ set nocompatible
 " Helps force plugins to load correctly when it is turned back on below
 filetype off
 
-" TODO: Load plugins here (pathogen or vundle)
 
 " Turn on syntax highlighting
 syntax on
@@ -13,7 +12,7 @@ syntax on
 filetype plugin indent on
 
 " TODO: Pick a leader key
-" let mapleader = ","
+let mapleader = ","
 
 " Security
 set modelines=0
@@ -113,5 +112,8 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
          
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-surround'
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'nathanaelkane/vim-indent-guides'
 call plug#end()
 
