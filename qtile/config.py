@@ -87,7 +87,7 @@ keys = [
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     # Custom Keybinds
-    Key([mod], "r", lazy.spawn('rofi -show run'),
+    Key([mod], "r", lazy.spawn('rofi -show drun'),
         desc="Spawn a command using a prompt widget"),
 ]
 
