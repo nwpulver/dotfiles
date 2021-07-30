@@ -63,3 +63,7 @@ colors:
 
 key_bindings:
   - { key: Return,   mods: Control|Shift, action: SpawnNewInstance }
+shell: 
+   program: /usr/local/bin/fish
+   args: 
+     - --login
