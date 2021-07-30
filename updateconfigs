@@ -4,4 +4,5 @@ cp ~/.config/qtile/config.py ~/dotfiles/qtile/
 cp ~/.config/qtile/autostart.sh ~/dotfiles/qtile/
 cp ~/.config/alacritty/alacritty.yml ~/dotfiles/alacritty/
 cp ~/.config/fish/config.fish ~/dotfiles/config.fish
+cp ~/.config/starship.toml ~/dotfiles/
 
